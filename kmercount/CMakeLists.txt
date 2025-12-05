@@ -8,7 +8,12 @@ if (OPENMP_FOUND)
 endif()
 message("Set OpenMP_EXTRA_LINKER_FLAGS=${OpenMP_EXTRA_LINKER_FLAGS}")
 
+# include /usr/local/cuda/include/ for finding cuda_runtime_api.h
+include_directories(/usr/local/cuda/include/)
 set(CUDA_SEPARABLE_COMPILATION ON)
+# Let CMake / nvcc detect the local GPU architecture
+set(CMAKE_CUDA_ARCHITECTURES native)
+
 # find_package(OpenMP)
 # if (OPENMP_FOUND)
 #     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
