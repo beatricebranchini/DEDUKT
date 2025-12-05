@@ -118,7 +118,7 @@ object			SOURCES				readufx.cpp
 			DEFINITIONS			${KMER_DEFS}
 			LINK_LIBRARIES		${ZLIB_LIBRARIES}
 			CXXFLAGS			${MPI_CXX_COMPILE_FLAGS}
-			CUDAFLAGS	        -ccbin=${CMAKE_CXX_COMPILER} -Xcompiler -fopenmp -arch=sm_70 -maxrregcount=32 #TODO some of these flags shouldn't be hard coded here
+			CUDAFLAGS	        -ccbin=${CMAKE_CXX_COMPILER} -Xcompiler -fopenmp -maxrregcount=32 # -arch=sm_70 #TODO some of these flags shouldn't be hard coded here
  			PROPERTIES          COMPILE_LANGUAGE CUDA ${CUDA_PROPERTIES} ) 
 		add_readid_defs(${NAME})
 			
