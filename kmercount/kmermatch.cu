@@ -1977,11 +1977,18 @@ size_t ProcessFiles(const vector<filedata> & allfiles, int pass, double & cardin
 					return 0;
 				}
 
+				// if (overlap_filename == NULL) {
+				// 	size_t str_length = strlen(OVERLAP_OUT_FNAME);
+				// 	overlap_filename = (char*) malloc(str_length);
+				// 	memset(overlap_filename, '\0', str_length);
+				// 	sprintf(overlap_filename, OVERLAP_OUT_FNAME, str_length);
+				// }
 				if (overlap_filename == NULL) {
-					size_t str_length = strlen(OVERLAP_OUT_FNAME);
-					overlap_filename = (char*) malloc(str_length);
-					memset(overlap_filename, '\0', str_length);
-					sprintf(overlap_filename, OVERLAP_OUT_FNAME, str_length);
+					size_t len = strlen(OVERLAP_OUT_FNAME);
+					overlap_filename = (char*)malloc(len + 1);
+					if (!overlap_filename) { perror("malloc"); MPI_Abort(MPI_COMM_WORLD, 1); }
+
+					snprintf(overlap_filename, len + 1, "%s", OVERLAP_OUT_FNAME);
 				}
 				if(myrank  == 0)
 				{
