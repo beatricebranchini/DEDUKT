@@ -97,7 +97,7 @@ uint64_t compress_smer(string cur_kmer, int len){
 }
 
 uint64_t compress_kmer(string cur_kmer){
-	char *s = new char[KMER_LENGTH];
+	char *s = new char[KMER_LENGTH + 1];
 	strcpy(s, cur_kmer.c_str()); 
 	uint64_t c_kmer = 0;
 	for (int k = 0; k < KMER_LENGTH; ++k)
