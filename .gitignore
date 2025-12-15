@@ -1,0 +1,6 @@
+.DS_Store
+DIBELLA_VERSION
+version.h
+per_thread/*
+build/*
+build-*/
